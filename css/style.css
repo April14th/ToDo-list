@@ -1,0 +1,162 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+.todo-header {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ea6faf;
+    padding: 25px 35px;
+    box-sizing: border-box;
+}
+
+.todo-header__title {
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.todo-header__input {
+    width: 85%;
+    height: 30px;
+    box-sizing: border-box;
+    border: 0px;
+    padding: 1px 10px;
+    outline: none;
+}
+
+.todo-header__btn {
+    width: 15%;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 0px;
+    outline: none;
+}
+
+.todo-body__tasks {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-body__tasks__task-item {
+    padding: 10px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dff0ff;
+    cursor: pointer;
+    position: relative;
+}
+
+.todo-body__tasks__task-item:hover:not(.todo-body__tasks__task-item_complete) {
+    background-color: #cee6fc
+}
+
+.todo-body__tasks__task-item_complete {
+    position: relative;
+    background-color: #498ecf;
+    color: white;
+}
+
+.todo-body__tasks__task-item_complete span {
+    text-decoration: line-through;
+}
+
+.todo-body__tasks__task-item_complete:before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 9px;
+    left: 13px;
+    transform: rotate(45deg);
+    height: 12px;
+    width: 7px;
+}
+
+.todo-body__tasks__task-item__closed {
+    font-size: 12px;
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    color: inherit;
+}
+
+.todo-body__tasks__task-item__checkbox {
+    display: none;
+    position: absolute;
+    right: 9px;
+    transform: scale(0.8);
+}
+
+.todo-body__tasks__task-item:hover .todo-body__tasks__task-item__checkbox {
+    display: block !important;
+}
+
+.todo-body__btns {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.todo-body__btns__complete,
+.todo-body__btns__remove, 
+.todo-body__btns__select, 
+.todo-body__btns__clear {
+    background-color: rgb(240, 120, 99);
+    border: none;
+    border-radius: 5px;
+    height: 38px;
+    width: 23%;
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+}
+
+.todo-body__btns_hide {
+    display: none;
+}
+
+.todo-body__btns__complete:hover,
+.todo-body__btns__remove:hover, 
+.todo-body__btns__select:hover, 
+.todo-body__btns__clear:hover {
+    box-shadow: 0px 2px 5px 0px rgb(240, 120, 99);
+}
+
+.todo-body__btns__complete:active,
+.todo-body__btns__remove:active, 
+.todo-body__btns__select:active, 
+.todo-body__btns__clear:active {
+    box-shadow: none;
+}
+
+@media screen and (max-width: 500px) {
+    .todo-body__btns {
+        flex-wrap: wrap;
+    }
+
+    .todo-body__btns__complete,
+    .todo-body__btns__remove {
+        margin-bottom: 5px;
+    }
+
+    .todo-body__btns__complete,
+    .todo-body__btns__remove, 
+    .todo-body__btns__select, 
+    .todo-body__btns__clear {
+        width: 49%;
+    }
+}

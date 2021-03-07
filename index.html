@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>toDo list</title>
+</head>
+<body>
+    <div class="container">
+        <div class="todo-header">
+            <h3 class="todo-header__title">My To Do List</h3>
+            <input class="todo-header__input" type="text" placeholder="Add a task...">
+            <button class="todo-header__btn">Add</button>
+        </div>
+        <div class="todo-body">
+            <ul class="todo-body__tasks">
+                <li class="todo-body__tasks__task-item">
+                    <span>Task 1</span>
+                    <button class="todo-body__tasks__task-item__closed">X</button>
+                    <input type="checkbox" class="todo-body__tasks__task-item__checkbox" autocomplete="off">
+                </li>
+                <li class="todo-body__tasks__task-item">
+                    <span>Task 2</span>
+                    <button class="todo-body__tasks__task-item__closed">X</button>
+                    <input type="checkbox" class="todo-body__tasks__task-item__checkbox" autocomplete="off">
+                </li>
+                <li class="todo-body__tasks__task-item">
+                    <span>Task 3</span>
+                    <button class="todo-body__tasks__task-item__closed">X</button>
+                    <input type="checkbox" class="todo-body__tasks__task-item__checkbox" autocomplete="off">
+                </li>
+            </ul>
+            <div class="todo-body__btns">
+                <button class="todo-body__btns__complete todo-body__btns_hide">Сделать выполненным</button>
+                <button class="todo-body__btns__remove todo-body__btns_hide">Удалить</button>
+                <button class="todo-body__btns__select">Выбрать все</button>
+                <button class="todo-body__btns__clear todo-body__btns_hide">Очистить выбор</button>
+            </div>
+        </div>
+    </div>
+    <script defer src="js/toDo.js"></script>
+</body>
+</html>
