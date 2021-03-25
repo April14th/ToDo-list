@@ -115,6 +115,7 @@
 .todo-body__btns__remove, 
 .todo-body__btns__select, 
 .todo-body__btns__clear {
+    display: none;
     background-color: rgb(240, 120, 99);
     border: none;
     border-radius: 5px;
@@ -125,8 +126,8 @@
     outline: none;
 }
 
-.todo-body__btns_hide {
-    display: none;
+.todo-body__btns__select {
+    display: block;
 }
 
 .todo-body__btns__complete:hover,
