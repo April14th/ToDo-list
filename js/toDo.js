@@ -1,6 +1,4 @@
 $(function() {
-    let checkboxes = document.getElementsByClassName('todo-body__tasks__task-item__checkbox');
-
     let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
     function initToDoList() {
@@ -85,10 +83,10 @@ $(function() {
 
     function completeTaskFromClick() {
         $('.todo-body__tasks').on('click', function(event) {
-            if (event.target.tagName == 'LI') {
+            if ($(event.target).prop('tagName') == 'LI') {
                 $(event.target).toggleClass('todo-body__tasks__task-item_complete');
                 updateStorageContainer(event.target);
-            } else if (event.target.tagName == 'SPAN') {
+            } else if ($(event.target).prop('tagName') == 'SPAN') {
                 $(event.target.parentElement).toggleClass('todo-body__tasks__task-item_complete');
                 updateStorageContainer(event.target.parentElement);
             }
@@ -97,9 +95,9 @@ $(function() {
 
     function setCheckedTask() {
         $('.todo-body__tasks').on('click', function(event) {
-            if (event.target.tagName == 'INPUT' && event.target.checked) {
+            if ($(event.target).prop('tagName') == 'INPUT' && $(event.target).prop('checked') == true) {
                 $(event.target).css('display', 'block');
-            } else if (event.target.tagName == 'INPUT' && !event.target.checked) {
+            } else if ($(event.target).prop('tagName') == 'INPUT' && $(event.target).prop('checked') == false) {
                 $(event.target).css('display', 'none');
             }
             showControlBtns();
