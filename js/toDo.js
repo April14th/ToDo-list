@@ -1,3 +1,5 @@
+import '../css/style.css';
+
 $(function() {
     let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
@@ -15,7 +17,7 @@ $(function() {
 
     function loadTasksFromStorageContainer() {
         for (let item of itemsArray) {
-            $('.todo-body__tasks').append(renderTask(item.text, item.id, item.isComplete));
+            $('.tasks').append(renderTask(item.text, item.id, item.isComplete));
         }
     }
 
@@ -23,7 +25,7 @@ $(function() {
         $('.todo-header__btn').on('click', function() {
             if ( $('.todo-header__input').val() ) {
                 let taskId = createTaskId(1000, 9999);
-                $('.todo-body__tasks').append(renderTask( $('.todo-header__input').val(), taskId) );
+                $('.tasks').append(renderTask( $('.todo-header__input').val(), taskId) );
                 updateStorageContainer( $('.todo-header__input').val(), taskId );
                 $('.todo-header__input').val('');
             }
@@ -36,10 +38,10 @@ $(function() {
     }
 
     function updateStorageContainer(task, id='') {
-        if (itemsArray.length < $('.todo-body__tasks').children().length) {
+        if (itemsArray.length < $('.tasks').children().length) {
             let taskObj = Object.assign( {id: id}, {text: task}, {isComplete: false} )
             itemsArray.push(taskObj);
-        } else if (itemsArray.length > $('.todo-body__tasks').children().length) {
+        } else if (itemsArray.length > $('.tasks').children().length) {
             for (let item of itemsArray) {
                 if (item.id == task.dataset.id) {
                     itemsArray.splice(itemsArray.indexOf(item), 1);
@@ -59,22 +61,22 @@ $(function() {
 
     function renderTask(task, id, isComplite=false) {
         if (isComplite) {
-            return `<li class="todo-body__tasks__task-item todo-body__tasks__task-item_complete" data-id="${id}">
+            return `<li class="tasks__task-item tasks__task-item_complete" data-id="${id}">
                         <span>${task}</span>
-                        <button class="todo-body__tasks__task-item__closed">X</button>
-                        <input type="checkbox" class="todo-body__tasks__task-item__checkbox">
+                        <button class="tasks__task-item__closed">X</button>
+                        <input type="checkbox" class="tasks__task-item__checkbox">
                     </li>`
         } else {
-            return `<li class="todo-body__tasks__task-item" data-id="${id}">
+            return `<li class="tasks__task-item" data-id="${id}">
                         <span>${task}</span>
-                        <button class="todo-body__tasks__task-item__closed">X</button>
-                        <input type="checkbox" class="todo-body__tasks__task-item__checkbox">
+                        <button class="tasks__task-item__closed">X</button>
+                        <input type="checkbox" class="tasks__task-item__checkbox">
                     </li>`
         }
     }
 
     function deleteTask() {
-        $('.todo-body__tasks').on('click', '.todo-body__tasks__task-item__closed', function() {
+        $('.tasks').on('click', '.tasks__task-item__closed', function() {
             $(this).parent().remove();
             updateStorageContainer(this.parentElement);
             showControlBtns();
@@ -82,19 +84,19 @@ $(function() {
     }
 
     function completeTaskFromClick() {
-        $('.todo-body__tasks').on('click', function(event) {
+        $('.tasks').on('click', function(event) {
             if ($(event.target).prop('tagName') == 'LI') {
-                $(event.target).toggleClass('todo-body__tasks__task-item_complete');
+                $(event.target).toggleClass('tasks__task-item_complete');
                 updateStorageContainer(event.target);
             } else if ($(event.target).prop('tagName') == 'SPAN') {
-                $(event.target.parentElement).toggleClass('todo-body__tasks__task-item_complete');
+                $(event.target.parentElement).toggleClass('tasks__task-item_complete');
                 updateStorageContainer(event.target.parentElement);
             }
         })
     }
 
     function setCheckedTask() {
-        $('.todo-body__tasks').on('click', function(event) {
+        $('.tasks').on('click', function(event) {
             if ($(event.target).prop('tagName') == 'INPUT' && $(event.target).prop('checked') == true) {
                 $(event.target).css('display', 'block');
             } else if ($(event.target).prop('tagName') == 'INPUT' && $(event.target).prop('checked') == false) {
@@ -105,10 +107,10 @@ $(function() {
     }
 
     function completeTaskFromBtn() {
-        $('.todo-body__btns__complete').on('click', function() {
-            $('.todo-body__tasks__task-item__checkbox:checked').each(function() {
-                if (!$(this.parentElement).hasClass('todo-body__tasks__task-item_complete')) {
-                    $(this.parentElement).addClass('todo-body__tasks__task-item_complete');
+        $('.btns__complete').on('click', function() {
+            $('.tasks__task-item__checkbox:checked').each(function() {
+                if (!$(this.parentElement).hasClass('tasks__task-item_complete')) {
+                    $(this.parentElement).addClass('tasks__task-item_complete');
                     updateStorageContainer(this.parentElement);
                 }
             })
@@ -116,8 +118,8 @@ $(function() {
     }
 
     function deleteTaskFromBtn() {
-        $('.todo-body__btns__remove').on('click', function() {
-            $('.todo-body__tasks__task-item__checkbox:checked').each(function() {
+        $('.btns__remove').on('click', function() {
+            $('.tasks__task-item__checkbox:checked').each(function() {
                 $(this.parentElement).remove();
                 updateStorageContainer(this.parentElement);
             })
@@ -126,8 +128,8 @@ $(function() {
     }
 
     function selectAllCheckboxes() {
-        $('.todo-body__btns__select').on('click', function() {
-            $('.todo-body__tasks__task-item__checkbox:not(:checked)').each(function() {
+        $('.btns__select').on('click', function() {
+            $('.tasks__task-item__checkbox:not(:checked)').each(function() {
                 $(this).css('display', 'block');
                 $(this).prop('checked', true);
             })
@@ -136,8 +138,8 @@ $(function() {
     }
 
     function clearAllCheckboxes() {
-        $('.todo-body__btns__clear').on('click', function() {
-            $('.todo-body__tasks__task-item__checkbox:checked').each(function() {
+        $('.btns__clear').on('click', function() {
+            $('.tasks__task-item__checkbox:checked').each(function() {
                 $(this).prop('checked', false);
                 $(this).css('display', 'none');
             })
@@ -146,10 +148,10 @@ $(function() {
     }
 
     function showControlBtns() {
-        if ($('.todo-body__tasks__task-item__checkbox:checked').length == 0) {
-            $('.todo-body__btns__complete, .todo-body__btns__remove, .todo-body__btns__clear').fadeOut(200);
+        if ($('.tasks__task-item__checkbox:checked').length == 0) {
+            $('.btns__complete, .btns__remove, .btns__clear').fadeOut(200);
         } else {
-            $('.todo-body__btns__complete, .todo-body__btns__remove, .todo-body__btns__clear').fadeIn(200);
+            $('.btns__complete, .btns__remove, .btns__clear').fadeIn(200);
         }
     }
 

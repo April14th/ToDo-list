@@ -1,0 +1,30 @@
+{
+  "name": "ToDo-list",
+  "version": "1.0.0",
+  "description": "ToDo list app on jQuery.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/April14th/ToDo-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/April14th/ToDo-list/issues"
+  },
+  "homepage": "https://github.com/April14th/ToDo-list#readme",
+  "devDependencies": {
+    "css-loader": "^5.1.1",
+    "html-webpack-plugin": "^5.3.1",
+    "jquery": "^3.6.0",
+    "mini-css-extract-plugin": "^1.3.9",
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

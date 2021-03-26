@@ -41,13 +41,13 @@
     outline: none;
 }
 
-.todo-body__tasks {
+.tasks {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.todo-body__tasks__task-item {
+.tasks__task-item {
     padding: 10px 35px;
     display: flex;
     justify-content: space-between;
@@ -57,21 +57,21 @@
     position: relative;
 }
 
-.todo-body__tasks__task-item:hover:not(.todo-body__tasks__task-item_complete) {
+.tasks__task-item:hover:not(.tasks__task-item_complete) {
     background-color: #cee6fc
 }
 
-.todo-body__tasks__task-item_complete {
+.tasks__task-item_complete {
     position: relative;
     background-color: #498ecf;
     color: white;
 }
 
-.todo-body__tasks__task-item_complete span {
+.tasks__task-item_complete span {
     text-decoration: line-through;
 }
 
-.todo-body__tasks__task-item_complete:before {
+.tasks__task-item_complete:before {
     content: '';
     position: absolute;
     border-color: #fff;
@@ -84,7 +84,7 @@
     width: 7px;
 }
 
-.todo-body__tasks__task-item__closed {
+.tasks__task-item__closed {
     font-size: 12px;
     border: 0;
     background-color: transparent;
@@ -94,27 +94,27 @@
     color: inherit;
 }
 
-.todo-body__tasks__task-item__checkbox {
+.tasks__task-item__checkbox {
     display: none;
     position: absolute;
     right: 9px;
     transform: scale(0.8);
 }
 
-.todo-body__tasks__task-item:hover .todo-body__tasks__task-item__checkbox {
+.tasks__task-item:hover .tasks__task-item__checkbox {
     display: block !important;
 }
 
-.todo-body__btns {
+.btns {
     display: flex;
     margin-top: 10px;
     justify-content: space-between;
 }
 
-.todo-body__btns__complete,
-.todo-body__btns__remove, 
-.todo-body__btns__select, 
-.todo-body__btns__clear {
+.btns__complete,
+.btns__remove, 
+.btns__select, 
+.btns__clear {
     display: none;
     background-color: rgb(240, 120, 99);
     border: none;
@@ -126,38 +126,38 @@
     outline: none;
 }
 
-.todo-body__btns__select {
+.btns__select {
     display: block;
 }
 
-.todo-body__btns__complete:hover,
-.todo-body__btns__remove:hover, 
-.todo-body__btns__select:hover, 
-.todo-body__btns__clear:hover {
+.btns__complete:hover,
+.btns__remove:hover, 
+.btns__select:hover, 
+.btns__clear:hover {
     box-shadow: 0px 2px 5px 0px rgb(240, 120, 99);
 }
 
-.todo-body__btns__complete:active,
-.todo-body__btns__remove:active, 
-.todo-body__btns__select:active, 
-.todo-body__btns__clear:active {
+.btns__complete:active,
+.btns__remove:active, 
+.btns__select:active, 
+.btns__clear:active {
     box-shadow: none;
 }
 
 @media screen and (max-width: 500px) {
-    .todo-body__btns {
+    .btns {
         flex-wrap: wrap;
     }
 
-    .todo-body__btns__complete,
-    .todo-body__btns__remove {
+    .btns__complete,
+    .btns__remove {
         margin-bottom: 5px;
     }
 
-    .todo-body__btns__complete,
-    .todo-body__btns__remove, 
-    .todo-body__btns__select, 
-    .todo-body__btns__clear {
+    .btns__complete,
+    .btns__remove, 
+    .btns__select, 
+    .btns__clear {
         width: 49%;
     }
 }
