@@ -1,3 +1,5 @@
+import '../css/style.css';
+
 let addBtn = document.querySelector('.todo-header__btn');
 let input = document.querySelector('.todo-header__input');
 let taskContainer = document.querySelector('.todo-body__tasks');
