@@ -2,12 +2,12 @@ import '../css/style.css';
 
 let addBtn = document.querySelector('.todo-header__btn');
 let input = document.querySelector('.todo-header__input');
-let taskContainer = document.querySelector('.todo-body__tasks');
-let checkboxes = document.getElementsByClassName('todo-body__tasks__task-item__checkbox');
-let completeBtn = document.querySelector('.todo-body__btns__complete');
-let removeBtn = document.querySelector('.todo-body__btns__remove');
-let selectBtn = document.querySelector('.todo-body__btns__select');
-let clearBtn = document.querySelector('.todo-body__btns__clear');
+let taskContainer = document.querySelector('.tasks');
+let checkboxes = document.getElementsByClassName('tasks__task-item__checkbox');
+let completeBtn = document.querySelector('.btns__complete');
+let removeBtn = document.querySelector('.btns__remove');
+let selectBtn = document.querySelector('.btns__select');
+let clearBtn = document.querySelector('.btns__clear');
 
 let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
@@ -69,16 +69,16 @@ function updateStorageContainer(task, id='') {
 
 function renderTask(task, id, isComplite=false) {
     if (isComplite) {
-        return `<li class="todo-body__tasks__task-item todo-body__tasks__task-item_complete" data-id="${id}">
+        return `<li class="tasks__task-item tasks__task-item_complete" data-id="${id}">
                     <span>${task}</span>
-                    <button class="todo-body__tasks__task-item__closed">X</button>
-                    <input type="checkbox" class="todo-body__tasks__task-item__checkbox">
+                    <button class="tasks__task-item__closed">X</button>
+                    <input type="checkbox" class="tasks__task-item__checkbox">
                 </li>`
     } else {
-        return `<li class="todo-body__tasks__task-item" data-id="${id}">
+        return `<li class="tasks__task-item" data-id="${id}">
                     <span>${task}</span>
-                    <button class="todo-body__tasks__task-item__closed">X</button>
-                    <input type="checkbox" class="todo-body__tasks__task-item__checkbox">
+                    <button class="tasks__task-item__closed">X</button>
+                    <input type="checkbox" class="tasks__task-item__checkbox">
                 </li>`
     }
 }
@@ -96,10 +96,10 @@ function deleteTask() {
 function completeTaskFromClick() {
     taskContainer.addEventListener('click', function(event) {
         if (event.target.tagName == 'LI') {
-            event.target.classList.toggle('todo-body__tasks__task-item_complete');
+            event.target.classList.toggle('tasks__task-item_complete');
             updateStorageContainer(event.target);
         } else if (event.target.tagName == 'SPAN') {
-            event.target.parentElement.classList.toggle('todo-body__tasks__task-item_complete');
+            event.target.parentElement.classList.toggle('tasks__task-item_complete');
             updateStorageContainer(event.target.parentElement);
         }
     })
@@ -119,8 +119,8 @@ function setCheckedTask() {
 function completeTaskFromBtn() {
     completeBtn.addEventListener('click', function() {
         for (let checkbox of checkboxes) {
-            if (checkbox.checked && !checkbox.parentElement.classList.contains('todo-body__tasks__task-item_complete')) {
-                checkbox.parentElement.classList.add('todo-body__tasks__task-item_complete');
+            if (checkbox.checked && !checkbox.parentElement.classList.contains('tasks__task-item_complete')) {
+                checkbox.parentElement.classList.add('tasks__task-item_complete');
                 updateStorageContainer(checkbox.parentElement);
             }
         }
@@ -129,7 +129,7 @@ function completeTaskFromBtn() {
 
 function deleteTaskFromBtn() {
     removeBtn.addEventListener('click', function() {
-        let checkboxesStatic = document.querySelectorAll('.todo-body__tasks__task-item__checkbox');       
+        let checkboxesStatic = document.querySelectorAll('.tasks__task-item__checkbox');       
         checkboxesStatic.forEach(function(checkbox) {
             if (checkbox.checked) {
                 checkbox.parentElement.remove();
@@ -176,13 +176,13 @@ function countOfCheckedCheckboxes() {
 
 function showControlBtns() {
     if (countOfCheckedCheckboxes() == 0) {
-        completeBtn.classList.add('todo-body__btns_hide');
-        removeBtn.classList.add('todo-body__btns_hide');
-        clearBtn.classList.add('todo-body__btns_hide');
+        completeBtn.classList.add('btns_hide');
+        removeBtn.classList.add('btns_hide');
+        clearBtn.classList.add('btns_hide');
     } else {
-        completeBtn.classList.remove('todo-body__btns_hide');
-        removeBtn.classList.remove('todo-body__btns_hide');
-        clearBtn.classList.remove('todo-body__btns_hide');
+        completeBtn.classList.remove('btns_hide');
+        removeBtn.classList.remove('btns_hide');
+        clearBtn.classList.remove('btns_hide');
     }
 }
 
