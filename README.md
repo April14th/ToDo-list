@@ -1,1 +1,1 @@
-ToDo list app on jQuery.
+ToDo list app on jQuery (build version)
